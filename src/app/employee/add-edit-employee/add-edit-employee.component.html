@@ -1,0 +1,70 @@
+<!-- todo change all the for name -->
+<form [formGroup]="EmployeeForm">
+  <div class="row">
+    <div class="col-4">
+      <div class="container">
+        <div class="form-group">
+          <label for="Name">Name</label>
+          <input *ngIf="!isAddForm" class="form-control" type="text" class="form-control" id="employeeName"
+            formControlName="employeeName" />
+          <input *ngIf="isAddForm" class="form-control" placeholder="Please type minimum 2 characters"
+            autocomplete="off" matInput type="text" formControlName="employeeName" (keyup)="showDropDown()">
+        </div>
+        <div *ngIf="displayAutocomplete">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action" *ngFor="let item of filteredListItem"
+              (click)="selectValue(item)">{{item.employeeName}}</li>
+            <li class="list-group-item list-group-item-action" *ngIf="filteredListItem.length===0">No Data Available
+            </li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <label for="Email">Email</label>
+          <input type="text" class="form-control" id="employeeEmail" formControlName="employeeEmail" />
+        </div>
+        <div class="form-group">
+          <label for="Mobile">Mobile</label>
+          <input type="text" class="form-control" id="employeeMobileNo" formControlName="employeeMobileNo" />
+        </div>
+        <div class="form-group">
+          <label for="Designation">Designation</label>
+          <input type="text" class="form-control" id="employeeDesignation" formControlName="employeeDesignation" />
+        </div>
+        <div class="form-group">
+          <label for="Reporting">Reporting</label>
+          <input type="text" class="form-control" id="employeeReporting" formControlName="employeeReporting" />
+        </div>
+        <div class="form-group">
+          <label for="usertype">User Type</label>
+
+          <mat-radio-group formControlName="userType">
+            <mat-radio-button value="A">Application User</mat-radio-button>
+            <mat-radio-button value="R">Resources</mat-radio-button>
+          </mat-radio-group>
+
+        </div>
+        <div class="form-group">
+          <label for="emailNotification">Email Notification</label>
+          <mat-checkbox id="emailNotification" formControlName="emailNotification"></mat-checkbox>
+        </div>
+        <div class="form-group">
+          <label for="client">Client</label>
+          <mat-select placeholder="Client" multiple formControlName="client">
+            <mat-option *ngFor="let client of clientList" [value]="client.Id">{{client.Name}}</mat-option>
+          </mat-select>
+        </div>
+        <div class="form-group">
+          <label for="feedbackType">Feedback Type</label>
+          <mat-select placeholder="Feedback Type" multiple formControlName="feedback">
+            <mat-option *ngFor="let feedbacktype of feedBacktypeList" [value]="feedbacktype.Id">{{feedbacktype.Name}}
+            </mat-option>
+          </mat-select>
+        </div>
+        <div class="form-group">
+          <input type="button" value="Back" class="btn btn-primary" (click)="NavigateToHome()">
+          <input type="button" value="Save" class="btn btn-primary" (click)="SaveEmployee()">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
