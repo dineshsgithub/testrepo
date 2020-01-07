@@ -15,8 +15,10 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
     }
     ngOnInit() {
         this.allEmployeesGridOptions = {
-            columnDefs: this.getColumnDefinations()
+            columnDefs: this.getColumnDefinations(),
+            rowHeight:50
         } as GridOptions;
+
     }
 
     ngAfterViewInit() {
@@ -29,9 +31,36 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
             {
                 headerName: 'Name',
                 field: 'employeeName',
+                filter: "agTextColumnFilter",
+                width:100
+            },
+            {
+                headerName: 'Email',
+                field: 'employeeEmail',
+                width:150
+            },
+            {
+                headerName: 'MobileNo',
+                field: 'employeeMobileNo',
+                width:100
+            },
+            {
+                headerName: 'Designation',
+                field: 'employeeDesignation',
+                width:150
+            },
+            {
+                headerName: 'Reporting',
+                field: 'employeeReporting',
+                width: '100'
+            },
+            {
+                headerName: 'Actions',
+                field: '',
                 cellRenderer: (params: any) => {
                     const eDiv = document.createElement('div');
-                    eDiv.innerHTML = '<a class=\'employee-name\' href=\'javascript:void(0)\'>' + params.data.employeeName + '</a> ';
+                    eDiv.innerHTML = '<input type=\'button\' class=\'employee-name btn btn-primary\' value=\'Edit\'/>'
+                    // eDiv.innerHTML = '<a class=\'employee-name\' href=\'javascript:void(0)\'>Edit</a> ';
                     const element = eDiv.querySelector('.employee-name');
                     if (element) {
                         element.addEventListener('click', () => {
@@ -40,22 +69,6 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
                     }
                     return eDiv;
                 }
-            },
-            {
-                headerName: 'Email',
-                field: 'employeeEmail'
-            },
-            {
-                headerName: 'MobileNo',
-                field: 'employeeMobileNo'
-            },
-            {
-                headerName: 'Designation',
-                field: 'employeeDesignation'
-            },
-            {
-                headerName: 'Reporting',
-                field: 'employeeReporting'
             }
         ];
     }
@@ -66,4 +79,6 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
     private AddEmployee() {
         this.router.navigate(['Add']);
     }
+
+
 }
