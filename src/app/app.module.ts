@@ -11,12 +11,17 @@ import { AddEditEmployeeComponent } from './employee/add-edit-employee/add-edit-
 import { EmployeeDetailsService } from './employee/employee-details/employee-details.service';
 import { AppRoutingModule } from './app.routing.module';
 import { RouterModule } from '@angular/router';
-import { MatRadioModule, MatSelectModule,MatCheckboxModule, MatAutocompleteModule } from '@angular/material';
+import { MatRadioModule, MatSelectModule, MatCheckboxModule, MatAutocompleteModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
+import { FeedbackQuestionarieComponent } from './feedback-questionarie/feedback-questionarie.component';
 
 @NgModule({
   declarations: [
-    AppComponent,EmployeeDetailsComponent,AddEditEmployeeComponent,HomeComponent
+    AppComponent,
+    EmployeeDetailsComponent,
+    AddEditEmployeeComponent,
+    HomeComponent,
+    FeedbackQuestionarieComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,7 @@ import { HomeComponent } from './home/home.component';
     AgGridModule.withComponents([]),
     HttpClientModule,
     AppRoutingModule,
-    RouterModule, MatRadioModule, MatSelectModule,MatCheckboxModule,MatAutocompleteModule
+    RouterModule, MatRadioModule, MatSelectModule, MatCheckboxModule, MatAutocompleteModule
   ],
   providers: [EmployeeDetailsService],
   bootstrap: [AppComponent]

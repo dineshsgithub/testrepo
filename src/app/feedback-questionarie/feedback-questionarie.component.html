@@ -1,0 +1,42 @@
+<form [formGroup]="feedbackQuestionarieForm">
+    <div class="form-group row">
+        <label for="questionarieName" class="col-sm-2 col-form-label">Questionarie Name</label>
+        <div class="col-sm-10">
+            <input type="text" autocomplete="off" matInput class="form-control" id="questionarieName"
+                formControlName="questionarieName" placeholder="Questionarie Name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <mat-label for="typeOfFeedback" class="col-sm-2 col-form-label">Type Of Feedback</mat-label>
+        <div class="col-sm-10">
+            <mat-select class="form-control" formControlName="typeOfFeedback">
+                <mat-option *ngFor="let typeOfFeedback of typeOfFeedbacks" [value]="typeOfFeedback.id">
+                    {{typeOfFeedback.description}}
+                </mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <mat-label for="subType" class="col-sm-2 col-form-label">Sub Type</mat-label>
+        <div class="col-sm-10">
+            <mat-select class="form-control" formControlName="subType">
+                <mat-option *ngFor="let subType of subTypes" [value]="subType.id">{{subType.description}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <mat-label for="feedbackQuestions" class="col-sm-2 col-form-label">Feedback Questions</mat-label>
+        <div class="form-group col-sm-9">
+            <input type="text" autocomplete="off" *ngFor="let count of feedbackQuestionsCount;let i = index;" matInput
+                class="form-control" id="feedbackQuestions{{i}}" maxlength="50"
+                formControlName="feedbackQuestions{{i+1}}" placeholder="Feedback Questions">
+        </div>
+        <div class="col-sm-1">
+            <input type="button" class="form-control btn btn-primary" value="Add"
+                [disabled]="isFeedBackQuestionControlValid()" (click)="addFeedBackQuestionControl()">
+        </div>
+    </div>
+    <div class="form-group row">
+        <input type="button" class="form-control btn btn-success col-sm-2" [disabled]="feedbackQuestionarieForm.invalid" value="Submit" (click)="submitForm()">
+    </div>
+</form>
