@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { IEmployee } from '../employee.module';
+import { IEmployee } from '../employee.model';
 import { EmployeeDetailsService } from '../employee-details/employee-details.service';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { Observable } from 'rxjs';
