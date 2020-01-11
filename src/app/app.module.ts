@@ -11,7 +11,7 @@ import { EmployeeDetailsComponent } from './employee/employee-details/employee-d
 import { AddEditEmployeeComponent } from './employee/add-edit-employee/add-edit-employee.component';
 import { AppRoutingModule } from './app.routing.module';
 import { RouterModule } from '@angular/router';
-import { MatRadioModule, MatSelectModule,MatCheckboxModule } from '@angular/material';
+import { MatRadioModule, MatSelectModule,MatCheckboxModule, MatAutocompleteModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { MatRadioModule, MatSelectModule,MatCheckboxModule } from '@angular/mate
     AgGridModule.withComponents([]),
     HttpClientModule,
     AppRoutingModule,
-    RouterModule, MatRadioModule, MatSelectModule,MatCheckboxModule
+    RouterModule, MatRadioModule, MatSelectModule,MatCheckboxModule,MatAutocompleteModule
   ],
   providers: [EmployeeDetailsService],
   bootstrap: [AppComponent]

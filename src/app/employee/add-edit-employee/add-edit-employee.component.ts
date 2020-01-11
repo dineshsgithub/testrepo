@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { DataFile } from './../../data';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IEmployee } from '../employee.module';
 import { EmployeeDetailsService } from '../employee-details/employee-details.service';
-
+import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 @Component({
     selector: 'add-edit-employee',
     templateUrl: 'add-edit-employee.component.html'
 })
 export class AddEditEmployeeComponent implements OnInit {
     EmployeeForm: FormGroup;
-    filteredListItem = [];
-    displayAutocomplete: boolean;
+    filteredListItem: IEmployee[] = [];
     isAddForm: boolean;
     allEmployeeList: IEmployee[] = [];
+    filteredEmployeeList: Observable<IEmployee[]>;
     clientList = [
         { Id: 1, Name: 'PWC' },
         { Id: 2, Name: 'CTS' },
@@ -40,14 +41,12 @@ export class AddEditEmployeeComponent implements OnInit {
 
     ngOnInit() {
         this.EmployeeForm = this.setupForm();
-        this.EmployeeForm.controls["employeeName"].valueChanges.pipe(debounceTime(200), distinctUntilChanged()).subscribe(employeeName => {
-            if (this.displayAutocomplete) {
-                this.filteredListItem = this.allEmployeeList.filter(a => a.employeeName.toLowerCase().includes(employeeName.toLowerCase()));
-                if (this.filteredListItem.length === 0) {
-                    this.EmployeeForm.reset();//Reset all Controls except employee Name:todo
-                }
-            }
-        });
+        this.filteredEmployeeList = this.EmployeeForm.controls["employeeName"].valueChanges
+            .pipe(
+                startWith(''),
+                map(value => typeof value === 'string' ? value : value.employeeName),
+                map(employeeName => employeeName ? this.filterEmployees(employeeName) : this.allEmployeeList.slice())
+            );
         this.activatedRoute.params.subscribe((param: Params) => {
             if (param && Object.keys(param).length === 0) {
                 this.isAddForm = true;
@@ -62,21 +61,14 @@ export class AddEditEmployeeComponent implements OnInit {
         });
     }
 
-    showDropDown() {
-        if (this.EmployeeForm.controls["employeeName"] && this.EmployeeForm.controls["employeeName"].value
-            && this.EmployeeForm.controls["employeeName"].value.length >= 2) {
-            this.displayAutocomplete = true;
-        }
-        else {
-            this.displayAutocomplete = false;
-        }
+    getselectedOption(ev: MatAutocompleteSelectedEvent) {
+        const employee = ev.option.value as IEmployee;
+        this.getEmployeeDetails(employee.employeeId);
+        this.EmployeeForm.controls["employeeName"].setValue(employee.employeeName);
     }
-
-    selectValue(item: IEmployee) {
-        this.displayAutocomplete = false;
-        this.getEmployeeDetails(item.employeeId);
+    clearTextBox() {
+        this.EmployeeForm.controls["employeeName"].setValue('');
     }
-
     setupForm(): FormGroup {
         return this.fb.group({
             employeeId: '',
@@ -91,6 +83,7 @@ export class AddEditEmployeeComponent implements OnInit {
             feedback: null
         });
     }
+    
     NavigateToHome() {
         this.router.navigate(['']);
     }
@@ -104,10 +97,14 @@ export class AddEditEmployeeComponent implements OnInit {
             employeeDetails = this.employeeDetailsService.getEmployeeDetails(employeeId);
         }
         this.EmployeeForm.patchValue(employeeDetails);
-        
+
     }
 
     private SaveEmployee() {
         console.log(this.EmployeeForm.value);
+    }
+
+    private filterEmployees(employeeName: string): IEmployee[] {
+        return this.allEmployeeList.filter(employee => employee.employeeName.toLowerCase().indexOf(employeeName.toLowerCase()) === 0);
     }
 }
