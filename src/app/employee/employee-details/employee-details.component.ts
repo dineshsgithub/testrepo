@@ -74,10 +74,10 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
     }
 
     private navigateToEmployeeEdit(employeeId: number) {
-        this.router.navigate(['Edit', employeeId]);
+        this.router.navigate(['edit', employeeId]);
     }
     private AddEmployee() {
-        this.router.navigate(['Add']);
+        this.router.navigate(['add']);
     }
 
 
