@@ -36,7 +36,7 @@ export class FeedbackQuestionarieComponent implements OnInit {
             questionarieName: (['', Validators.required]),
             typeOfFeedback: '',
             subType: '',
-            feedbackQuestions1: ['', [Validators.required, Validators.maxLength(50)]]
+            feedbackQuestions1: ['', [Validators.required, Validators.maxLength(50)]]//todo change this to formgroup.
         });
     }
 

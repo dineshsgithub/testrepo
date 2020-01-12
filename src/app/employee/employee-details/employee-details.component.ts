@@ -54,8 +54,7 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
                 field: '',
                 cellRenderer: (params: any) => {
                     const eDiv = document.createElement('div');
-                    eDiv.innerHTML = '<input type=\'button\' disabled=\"true\" class=\'employee-name btn btn-primary\' value=\'Edit\'/>'
-                    // eDiv.innerHTML = '<a class=\'employee-name\' href=\'javascript:void(0)\'>Edit</a> ';
+                    eDiv.innerHTML = '<input type=\'button\' class=\'employee-name btn btn-primary\' value=\'Edit\'/>'
                     const element = eDiv.querySelector('.employee-name');
                     if (element) {
                         element.addEventListener('click', () => {
@@ -69,11 +68,10 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
     }
 
     private navigateToEmployeeEdit(employeeId: number) {
-        this.router.navigate(['edit', employeeId]);
-    }
-    private AddEmployee() {
-        this.router.navigate(['add']);
+        this.router.navigate(['employeesMaster','edit', employeeId]);
     }
 
-
+    private addEmployee() {
+        this.router.navigate(['employeesMaster','add']);
+    }
 }

@@ -83,8 +83,8 @@ export class AddEditEmployeeComponent implements OnInit {
         });
     }
     
-    NavigateToHome() {
-        this.router.navigate(['']);
+    navigateToHome() {
+        this.router.navigate(['employeesMaster']);
     }
 
     private getEmployeeDetails(employeeId: number) {
@@ -96,10 +96,9 @@ export class AddEditEmployeeComponent implements OnInit {
             employeeDetails = this.employeeDetailsService.getEmployeeDetails(employeeId);
         }
         this.EmployeeForm.patchValue(employeeDetails);
-
     }
 
-    private SaveEmployee() {
+    private saveEmployee() {
         console.log(this.EmployeeForm.value);
     }
 
