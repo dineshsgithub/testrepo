@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { MatRadioModule, MatSelectModule, MatCheckboxModule, MatAutocompleteModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { FeedbackQuestionarieComponent } from './feedback-questionarie/feedback-questionarie.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FeedbackQuestionarieComponent } from './feedback-questionarie/feedback-
     EmployeeDetailsComponent,
     AddEditEmployeeComponent,
     HomeComponent,
-    FeedbackQuestionarieComponent
+    FeedbackQuestionarieComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

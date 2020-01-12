@@ -2,6 +2,9 @@
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 
+.active-link{
+  background-color: #000 !important;
+}
 a {
   text-decoration: none !important;
   font-size: xx-large;
@@ -31,7 +34,7 @@ a {
   
   /* Current/active navbar link */
   .active {
-    background-color: #167a5a;
+    background-color: #8fadef;
   }
 
   form{
@@ -57,4 +60,9 @@ a {
 
  .border-feedback-form {
   border: 5px solid #edeff1 !important;
+}
+
+input[type=button]:disabled{
+  cursor: not-allowed !important;
+  pointer-events: all !important;
 }

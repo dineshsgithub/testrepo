@@ -1,12 +1,13 @@
 <div class="navbar">
-    <!-- todo use router link active and add css to currently activated route -->
-    <a class="active rounded-lg" href="Javascript:void(0)" (click)="navigateToHome()"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a class="active rounded-lg" href="Javascript:void(0)" (click)="navigateToEmployeeMaster()"><i class="fa fa-fw fa-home"></i>
+    <a class="active rounded-lg" href="Javascript:void(0)" [routerLink]="'/home'" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a class="active rounded-lg" href="Javascript:void(0)" [routerLink]="'/employeesMaster'" routerLinkActive="active-link"><i
+            class="fa fa-address-book"></i>
         Employee Master</a>
-    <a class="active rounded-lg" href="Javascript:void(0)" (click)="navigateToFeedbackQuestionarie()"><i
-            class="fa fa-fw fa-home"></i> Feedback Questionarie Master</a>
+    <a class="active rounded-lg" href="Javascript:void(0)" [routerLink]="'/questionarieMaster'"
+        routerLinkActive="active-link"><i class="fa fa-address-book"></i> Feedback Questionarie Master</a>
 </div>
 <router-outlet></router-outlet>
 <div class="page-footer">
     <p class="footer-p">Copyright S Company © 2020. All rights reserved.</p>
-  </div>
+</div>
