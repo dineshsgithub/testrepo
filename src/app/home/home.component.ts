@@ -6,6 +6,19 @@ import { Router } from '@angular/router';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
+    cards = [
+        {
+            title: 'Employee Master',
+            text: 'This is regarding employee master.',
+            navigationLink: '/employeesMaster'
+        },
+        {
+            title: 'FeedBack Questionnaire Master',
+            text: 'This is regarding FeedBack Questionarie Master.',
+            navigationLink: '/questionarieMaster'
+        }
+    ]
     constructor(private router: Router) {
 
     }
