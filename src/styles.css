@@ -2,5 +2,59 @@
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a {
+  text-decoration: none !important;
+  font-size: xx-large;
+}
+
+/* Style the navigation bar */
+.navbar {
+    width: 100%;
+    background-color: #665f65;
+    overflow: auto;
+  }
+  
+  /* Navbar links */
+  .navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Navbar links on mouse-over */
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  /* Current/active navbar link */
+  .active {
+    background-color: #167a5a;
+  }
+
+  form{
+    padding: 30px;
+    font-family: serif !important;
+  }
+
+  .page-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #665f65;
+    color: white;
+    text-align: center;
+ }
+
+ .footer-p{
+  margin-top: 20px;
+  margin-bottom: 1rem;
+  margin-bottom: 20px;
+ }
+
+ .border-feedback-form {
+  border: 5px solid #edeff1 !important;
+}

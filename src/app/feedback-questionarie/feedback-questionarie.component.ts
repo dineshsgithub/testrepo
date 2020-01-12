@@ -42,9 +42,11 @@ export class FeedbackQuestionarieComponent implements OnInit {
 
     addFeedBackQuestionControl() {
         this.feedbackQuestionsCount.push(1);
-        this.feedbackQuestionarieForm.addControl('feedbackQuestions' + this.feedbackQuestionsCount.length,
+        let controlName = 'feedbackQuestions' + this.feedbackQuestionsCount.length;
+        this.feedbackQuestionarieForm.addControl(controlName,
             new FormControl('', [Validators.required, Validators.maxLength(50)]));
         this.feedbackQuestionarieForm.updateValueAndValidity();
+        //To do set focus to the newly added control
     }
 
     isFeedBackQuestionControlValid(): boolean {
@@ -54,5 +56,10 @@ export class FeedbackQuestionarieComponent implements OnInit {
 
     submitForm() {
         console.log(this.feedbackQuestionarieForm.value)
+    }
+
+    onCancelClick(){
+        this.feedbackQuestionarieForm.reset();
+        this.feedbackQuestionsCount = new Array(1);
     }
 }

@@ -1,15 +1,16 @@
-<div class="row">
-    <div class="col-4">
-        <div class="container">
-            <div class="form-group">
-                <ag-grid-angular #agGrid style="width: 700px; height: 350px;" class="ag-theme-balham"
-                    [gridOptions]="allEmployeesGridOptions" [defaultColDef]="defaultColDef" [pagination]="true"
-                    [paginationPageSize]="5" [enableSorting]="true">
-                </ag-grid-angular>
-            </div>
-            <div class="form-group">
-                <input type="button" class="btn btn-primary" value="Add" (click)="AddEmployee()" />
-            </div>
+<form>
+    <div class="col-10 border-feedback-form rounded">
+        <div class="form-group" style="padding-top:10px;">
+            <ag-grid-angular #agGrid style="height: 350px;" class="ag-theme-balham"
+                [gridOptions]="allEmployeesGridOptions" 
+                [defaultColDef]="defaultColDef"
+                [pagination]="true"
+                [paginationPageSize]="5" [enableSorting]="true">
+            </ag-grid-angular>
+        </div>
+        <div class="form-group">
+            <input type="button" class="col-sm-1 form-control btn btn-primary" disabled="true" value="Add"
+                (click)="AddEmployee()" />
         </div>
     </div>
-</div>
+</form>

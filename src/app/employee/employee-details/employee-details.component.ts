@@ -31,35 +31,30 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
             {
                 headerName: 'Name',
                 field: 'employeeName',
-                filter: "agTextColumnFilter",
-                width:100
+                filter: "agTextColumnFilter"
             },
             {
                 headerName: 'Email',
-                field: 'employeeEmail',
-                width:150
+                field: 'employeeEmail'
             },
             {
                 headerName: 'MobileNo',
-                field: 'employeeMobileNo',
-                width:100
+                field: 'employeeMobileNo'
             },
             {
                 headerName: 'Designation',
-                field: 'employeeDesignation',
-                width:150
+                field: 'employeeDesignation'
             },
             {
                 headerName: 'Reporting',
-                field: 'employeeReporting',
-                width: '100'
+                field: 'employeeReporting'
             },
             {
                 headerName: 'Actions',
                 field: '',
                 cellRenderer: (params: any) => {
                     const eDiv = document.createElement('div');
-                    eDiv.innerHTML = '<input type=\'button\' class=\'employee-name btn btn-primary\' value=\'Edit\'/>'
+                    eDiv.innerHTML = '<input type=\'button\' disabled=\"true\" class=\'employee-name btn btn-primary\' value=\'Edit\'/>'
                     // eDiv.innerHTML = '<a class=\'employee-name\' href=\'javascript:void(0)\'>Edit</a> ';
                     const element = eDiv.querySelector('.employee-name');
                     if (element) {
